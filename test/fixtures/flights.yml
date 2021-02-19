@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  origin_airport: one
+  destination_airport: one
+  start: 2021-02-19
+  duration: 1
+
+two:
+  origin_airport: two
+  destination_airport: two
+  start: 2021-02-19
+  duration: 1
