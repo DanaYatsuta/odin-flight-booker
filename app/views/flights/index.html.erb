@@ -1,3 +1,21 @@
+<%= form_with method: :get, scope: 'query' do |form| %>
+  <%= form.label 'origin_airport_id', 'From:' %>
+  <%= form.collection_select 'origin_airport_id', Airport.all, :id, :code %>
+  
+  <%= form.label 'destination_airport_id', 'To:' %>
+  <%= form.collection_select 'destination_airport_id', Airport.all, :id, :code %><br>
+
+  <%= form.label 'passenger_count', 'Passengers:'%>
+  <%= form.select 'passenger_count', (1..4).to_a %><br>
+
+  <%= form.label 'start', 'Departure start:'%>
+  <%= form.collection_select 'start', Flight.all, :start, :start_date_formatted %><br>
+
+  <%= form.submit 'Search' %>
+<% end %>
+
+<hr>
+
 <% @flights.each do |flight| %>
   <p>Flight from <%= @airport_codes[flight.origin_airport_id]%> to <%= @airport_codes[flight.destination_airport_id] %></p>
   <p>Departure starts: <%= flight.start %></p>
