@@ -1,0 +1,5 @@
+<% @flights.each do |flight| %>
+  <p>Flight from <%= @airport_codes[flight.origin_airport_id]%> to <%= @airport_codes[flight.destination_airport_id] %></p>
+  <p>Departure starts: <%= flight.start %></p>
+  <p>Flight duration: <%= flight.duration %></p><hr>
+<% end %>
