@@ -1,15 +1,15 @@
 <%= form_with method: :get, scope: 'query' do |form| %>
   <%= form.label 'origin_airport_id', 'From:' %>
-  <%= form.collection_select 'origin_airport_id', Airport.all, :id, :code %>
+  <%= form.collection_select 'origin_airport_id', Airport.all, :id, :code, selected: @query.nil? ? 1 : @query[:origin_airport_id] %>
   
   <%= form.label 'destination_airport_id', 'To:' %>
-  <%= form.collection_select 'destination_airport_id', Airport.all, :id, :code %><br>
+  <%= form.collection_select 'destination_airport_id', Airport.all, :id, :code, selected: @query.nil? ? 1 : @query[:destination_airport_id] %><br>
 
   <%= form.label 'passenger_count', 'Passengers:'%>
-  <%= form.select 'passenger_count', (1..4).to_a %><br>
+  <%= form.select 'passenger_count', (1..4).to_a, selected: @query.nil? ? 1 : @query[:passenger_count] %><br>
 
   <%= form.label 'start', 'Departure start:'%>
-  <%= form.collection_select 'start', Flight.all, :start, :start_date_formatted %><br>
+  <%= form.collection_select 'start', Flight.all, :start, :start_date_formatted, selected: @query.nil? ? 1 : @query[:start] %><br>
 
   <%= form.submit 'Search' %>
 <% end %>
