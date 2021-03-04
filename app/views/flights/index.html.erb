@@ -18,8 +18,8 @@
 
 <%= form_with url: new_booking_path, method: :get do |form| %>
   <% @flights.each do |flight| %>
-    <%= form.label :flight_to_book, "Book this flight", value: flight.id %>
-    <%= form.radio_button :flight_to_book, flight.id %>
+    <%= form.label :flight_to_book_id, "Book this flight", value: flight.id %>
+    <%= form.radio_button :flight_to_book_id, flight.id %>
     <p>Flight from <%= @airport_codes[flight.origin_airport_id]%> to <%= @airport_codes[flight.destination_airport_id] %></p>
     <p>Departure starts: <%= flight.start %></p>
     <p>Flight duration: <%= flight.duration %></p><hr>
