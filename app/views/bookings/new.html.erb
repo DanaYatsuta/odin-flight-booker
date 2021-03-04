@@ -1,0 +1,14 @@
+<p>Selected flight id: <%= @flight_to_book.id %></p>
+<p>Flight from <%= airport_codes[@flight_to_book.origin_airport_id] %> to <%= airport_codes[@flight_to_book.destination_airport_id] %> on <%= @flight_to_book.start_date_formatted %></p>
+
+<%= form_with model: @booking do |form| %>
+  <%= form.fields_for :passengers do |passenger_form| %>
+    <%= passenger_form.label :name %>
+    <%= passenger_form.text_field :name %>
+
+    <%= passenger_form.label :email %>
+    <%= passenger_form.text_field :email %><br>
+  <% end %><br>
+
+  <%= form.submit %>
+<% end %>
