@@ -8,6 +8,8 @@ class FlightsController < ApplicationController
         destination_airport_id: params[:query][:destination_airport_id],
         start: params[:query][:start]
       )
+    else
+      @flights = Flight.all
     end
   end
 end
