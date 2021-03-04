@@ -11,8 +11,5 @@ class FlightsController < ApplicationController
     else
       @flights = Flight.all
     end
-
-    @airport_options = Airport.pluck(:id, :code)
-    @airport_codes = @airport_options.to_h
   end
 end
