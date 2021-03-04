@@ -16,7 +16,7 @@
 
 <hr>
 
-<%= form_with method: :get do |form| %>
+<%= form_with url: new_booking_path, method: :get do |form| %>
   <% @flights.each do |flight| %>
     <%= form.label :flight_to_book, "Book this flight", value: flight.id %>
     <%= form.radio_button :flight_to_book, flight.id %>
