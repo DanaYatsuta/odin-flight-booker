@@ -1,4 +1,9 @@
 <% @bookings.each do |booking| %>
   <p>Flight from <%= airport_codes[booking.flight.origin_airport_id] %> to <%= airport_codes[booking.flight.destination_airport_id] %>
   on <%= booking.flight.start_date_formatted %></p>
+
+  <p>Passengers:</p>
+  <% booking.passengers.each do |passenger| %>
+    <p><%= passenger.name %>, <%= passenger.email %></p>
+  <% end %>
 <% end %>
