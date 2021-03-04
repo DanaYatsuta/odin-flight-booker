@@ -10,8 +10,25 @@ class BookingsController < ApplicationController
   end
 
   def create
-    @booking = Flight.bookings.build
+    flight_to_book_id = params[:booking][:flight_to_book_id].to_i
+    @flight_to_book = Flight.find(flight_to_book_id)
 
+    @booking = @flight_to_book.bookings.build(booking_params)
+    
+    if @booking.save
+      redirect_to action: :index
+    else
+      render :new
+    end
+  end
 
+  def index
+    @bookings = Booking.all
+  end
+
+  private 
+
+  def booking_params
+    params.require(:booking).permit(passengers_attributes: [:name, :email])
   end
 end
