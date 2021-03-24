@@ -16,6 +16,9 @@ class BookingsController < ApplicationController
     @booking = @flight_to_book.bookings.build(booking_params)
     
     if @booking.save
+      @booking.passengers.each do |passenger|
+        PassengerMailer.with(user: passenger).thank_you_email.deliver!
+      end
       redirect_to action: :index
     else
       render :new
